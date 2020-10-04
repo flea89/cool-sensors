@@ -1,13 +1,25 @@
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let httpClient;
+  let httpTestingController;
+
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    const tb = await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
       ],
-    }).compileComponents();
+      imports: [ HttpClientTestingModule ],
+    });
+    // Inject the http service and test controller for each test
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
+
+    tb.compileComponents();
+
   });
 
   it('should create the app', () => {
@@ -26,6 +38,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('sensors app is running!');
+    expect(compiled.querySelector('h1').textContent).toContain('sensor');
   });
 });

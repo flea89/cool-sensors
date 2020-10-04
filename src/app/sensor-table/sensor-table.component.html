@@ -1,0 +1,11 @@
+<table>
+  <table>
+    <thead>
+        <tr *ngFor="let header of headers">
+            <th> {{ header }}</th>
+        </tr>
+    </thead>
+    <tbody>
+      <app-sensor-read *ngFor="let read of reads" [read]="read"></app-sensor-read>
+    </tbody>
+</table>

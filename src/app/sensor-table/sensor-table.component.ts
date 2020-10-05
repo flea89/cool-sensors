@@ -3,6 +3,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatSort } from '@angular/material/sort';
 import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
 import { SensorRead } from '../sensor-service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogMapComponent } from '../dialog-map/dialog-map.component';
 
 
 @Component({
@@ -19,12 +21,15 @@ export class SensorTableComponent implements OnInit {
     'name',
     'reading',
     'reading_ts',
+    'location',
   ];
   dataSource: TableVirtualScrollDataSource<SensorRead> = new TableVirtualScrollDataSource<SensorRead>([]);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort | null = null;
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -42,5 +47,18 @@ export class SensorTableComponent implements OnInit {
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }
   }
+
+  seeOnMap(read: SensorRead): void {
+    this.dialog.open(DialogMapComponent, {
+      data: {
+        label: `${read.id} - ${read.name}`,
+        marker: {
+          lat: read.latitude,
+          lng: read.longitude,
+        }
+      }
+    });
+  }
+
 
 }

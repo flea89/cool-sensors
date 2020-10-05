@@ -11,12 +11,17 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 import {TableVirtualScrollModule} from 'ng-table-virtual-scroll';
+import { DialogMapComponent } from './dialog-map/dialog-map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SensorTableComponent
+    SensorTableComponent,
+    DialogMapComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,9 @@ import {TableVirtualScrollModule} from 'ng-table-virtual-scroll';
     MatFormFieldModule,
     TableVirtualScrollModule,
     MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

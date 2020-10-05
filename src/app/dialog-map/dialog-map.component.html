@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Sensor {{ data.label }} location</h1>
+<div mat-dialog-content>
+  <google-map
+    height="400px"
+    width="600px"
+    [center]="data.marker"
+    [zoom]="zoom">
+  <map-marker
+    [position]="data.marker"
+    [options]="markerOptions"></map-marker>
+</google-map>
+  <button mat-button (click)="close()">Close</button>
+</div>

@@ -1,5 +1,11 @@
-<cdk-virtual-scroll-viewport tvsItemSize class="wrapper mat-elevation-z2">
+<mat-form-field class="filter">
+  <input
+    matInput (keyup)="applyFilter($event.target.value)"
+    placeholder="Ozone">
+    <mat-hint>Type the name or type of the sensor</mat-hint>
+</mat-form-field>
 
+<cdk-virtual-scroll-viewport [tvsItemSize]="50" class="wrapper mat-elevation-z2">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <!-- Name Column -->
     <ng-container matColumnDef="id">

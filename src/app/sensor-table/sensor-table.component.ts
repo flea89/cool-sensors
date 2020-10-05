@@ -30,6 +30,17 @@ export class SensorTableComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource = new TableVirtualScrollDataSource<SensorRead>(this.reads);
     this.dataSource.sort = this.sort;
+
+    // Custom predicate for filtering type or name
+    this.dataSource.filterPredicate = (data, filter: string): boolean  => {
+      return data.name.toLowerCase().includes(filter) || data.sensor_type.toLowerCase().includes(filter);
+    };
+  }
+
+  applyFilter(filterValue: string | null): void {
+    if (filterValue != null) {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
   }
 
 }

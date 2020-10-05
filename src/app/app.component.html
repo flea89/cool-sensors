@@ -1,13 +1,14 @@
 <style></style>
+<div class="app">
+  <h1>{{ title }}</h1>
+  <h2>
+    Sensor readings:
+  </h2>
+  <div *ngIf="(sensorsReads$ | async) as reads; else loading">
+    <app-sensor-table [reads]="reads"></app-sensor-table>
+  </div>
 
-<h1>{{ title }}</h1>
-<h2>
-  Sensor readings:
-</h2>
-<div *ngIf="(sensorsReads$ | async) as reads; else loading">
-  <app-sensor-table [reads]="reads"></app-sensor-table>
+  <ng-template #loading>
+    Loading data... Seat back and relax!
+  </ng-template>
 </div>
-
-<ng-template #loading>
-  Loading data... Seat back and relax!
-</ng-template>

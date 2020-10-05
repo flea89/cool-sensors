@@ -1,5 +1,13 @@
 <style></style>
 
 <h1>{{ title }}</h1>
+<h2>
+  Sensor readings:
+</h2>
+<div *ngIf="(sensorsReads$ | async) as reads; else loading">
+  <app-sensor-table [reads]="reads"></app-sensor-table>
+</div>
 
-<app-sensor-table [reads]="(sensorsReads$ | async)"></app-sensor-table>
+<ng-template #loading>
+  Loading data... Seat back and relax!
+</ng-template>

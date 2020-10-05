@@ -10,7 +10,7 @@ import { SensorRead, SensorsDataService } from './sensor-service.service';
 })
 
 export class AppComponent {
-  title = 'sensors';
+  title = 'Cool sensors';
   sensorsReads$: Observable<SensorRead[]>;
 
   constructor(

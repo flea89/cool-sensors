@@ -1,3 +1,5 @@
+/// <reference types="@types/googlemaps" />
+
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -21,7 +23,6 @@ export class DialogMapComponent {
   zoom = 10;
 
   constructor(
-    httpClient: HttpClient,
     public dialogRef: MatDialogRef<DialogMapComponent>,
     @Inject(MAT_DIALOG_DATA) public data: MapDialogData) {
     }
